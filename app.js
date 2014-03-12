@@ -9,12 +9,25 @@ angular.module('noteApp', [])
 
       };
 
-      scope.openEditor = function() {
-
+      scope.openEditor = function(index) {
+        if (index !== -1) {
+          scope.noteText = notesFactory.get(index).content;
+          scope.index = index;
+        } else {
+          scope.noteText = '';
+        }
       };
 
       scope.saveNote = function() {
+        if (scope.noteText !== '') {
+          var note = {};
 
+          note.title = scope.noteText.length > 20 ? scope.noteText.substring(0, 20) : scope.noteText;
+          note.content = scope.noteText;
+          note.id = scope.index;
+
+          notesFactory.put(note)
+        }
       };
     },
     templateUrl: 'template.html'
