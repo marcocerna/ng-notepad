@@ -1,11 +1,9 @@
 <div ng-show="!editMode">
-  <ul>
-    <li ng-repeat="note in notes">
-      <a href="#" ng-click="openEditor(note.id)">{{note.title}}</a>
-    </li>
-  </ul>
+  <p ng-repeat="note in notes">
+    <a href="#" ng-click="openEditor(note.id)">{{note.title}}</a>
+  </p>
 </div>
 <div id="editor" ng-show="editMode" contenteditable="true" ng-bind="noteText"></div>
 
-<span> <a ng-click="openEditor()" ng-show="!editMode">Create a Note</span>
-<span> <a ng-click="saveNote()" ng-show="editMode">Back to Main</span>
+<span ng-show="!editMode"> <a ng-click="openEditor()">Create a Note</a></span>
+<span ng-show="editMode"> <a ng-click="saveNote()">Back</a></span>
