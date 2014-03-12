@@ -1,4 +1,4 @@
-angular.module('noteApp', [])
+angular.module('noteapp', [])
 
 .directive('notepad', function(notesFactory) {
   return {
@@ -44,11 +44,11 @@ angular.module('noteApp', [])
   return {
     put: function(note) {
       localStorage.setItem('note' + note.id, note);
-    };
+    },
 
     get: function(index) {
       return localStorage.getItem('note' + index);
-    };
+    },
 
     getAll: function() {
       var notes = [];
@@ -57,6 +57,6 @@ angular.module('noteApp', [])
         notes.push(note);
       };
       return notes;
-    };
+    }
   }
 })
