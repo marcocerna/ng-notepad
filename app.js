@@ -25,12 +25,13 @@ angular.module('noteapp', [])
           console.log('index == undefined')
           scope.noteText = '';
         }
+
+        debugger
       };
 
       scope.saveNote = function() {
         console.log('saveNote!')
         scope.noteText = document.getElementById('editor').innerHTML;
-        debugger
 
         console.log('noteText is: ' + scope.noteText)
         if (scope.noteText !== '') {
@@ -38,7 +39,7 @@ angular.module('noteapp', [])
 
           note.title = scope.noteText.length > 20 ? scope.noteText.substring(0, 20) : scope.noteText;
           note.content = scope.noteText;
-          note.id = scope.index;
+          note.id = localStorage.length;
 
           console.log('note is: ' + note)
           scope.notes = notesFactory.put(note);
@@ -59,13 +60,13 @@ angular.module('noteapp', [])
   return {
     put: function(note) {
       console.log("notesFactory 'put' with note: " + note);
-      localStorage.setItem('note' + note.id, note);
+      localStorage.setItem('note' + note.id, JSON.stringify(note));
       return this.getAll();
     },
 
     get: function(index) {
       console.log("notesFactory 'get' with index: " + index);
-      return localStorage.getItem('note' + index);
+      return JSON.parse(localStorage.getItem('note' + index));
     },
 
     getAll: function() {
@@ -73,8 +74,9 @@ angular.module('noteapp', [])
       var notes = [];
       for (var i = 0; i < localStorage.length; i++) {
         var note = localStorage.getItem('note' + i);
-        notes.push(note);
+        notes.push(JSON.parse(note));
       };
+      console.log(notes);
       return notes;
     }
   }
