@@ -5,6 +5,7 @@ angular.module('noteapp', [])
     restrict: 'AE',
     scope: {},
     link: function(scope, elem, attrs) {
+
       scope.restore = function() {
         console.log('restore!')
         scope.noteText = '';
@@ -28,6 +29,9 @@ angular.module('noteapp', [])
 
       scope.saveNote = function() {
         console.log('saveNote!')
+        scope.noteText = document.getElementById('editor').innerHTML;
+        debugger
+
         console.log('noteText is: ' + scope.noteText)
         if (scope.noteText !== '') {
           var note = {};
@@ -44,6 +48,8 @@ angular.module('noteapp', [])
       };
 
       scope.restore();
+
+
     },
     templateUrl: 'template.html'
   }
