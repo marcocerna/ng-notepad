@@ -39,7 +39,7 @@ angular.module('noteapp', [])
 
           note.title = scope.noteText.length > 20 ? scope.noteText.substring(0, 20) : scope.noteText;
           note.content = scope.noteText;
-          note.id = localStorage.length;
+          note.id = scope.index !== -1 ? scope.index : localStorage.length;
 
           console.log('note is: ' + note)
           scope.notes = notesFactory.put(note);
