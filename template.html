@@ -1,6 +1,8 @@
 <div ng-show="!editMode">
   <ul>
-    <li ng-repeat="note in notes">{{note.title}}</li>
+    <li ng-repeat="note in notes">
+      <a href="#" ng-click="openEditor(note.id)">{{note.title}}</a>
+    </li>
   </ul>
 </div>
 <div ng-show="editMode" contenteditable="true" ng-bind="noteText"></div>
