@@ -6,10 +6,14 @@ angular.module('noteApp', [])
     scope: {},
     link: function(scope, elem, attrs) {
       scope.restore = function() {
-
+        scope.noteText = '';
+        scope.index = -1;
+        scope.editMode = false;
       };
 
       scope.openEditor = function(index) {
+        scope.editMode = true;
+
         if (index !== -1) {
           scope.noteText = notesFactory.get(index).content;
           scope.index = index;
@@ -28,6 +32,8 @@ angular.module('noteApp', [])
 
           notesFactory.put(note)
         }
+
+        scope.restore();
       };
     },
     templateUrl: 'template.html'
