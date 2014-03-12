@@ -1,0 +1,9 @@
+<div ng-show="!editMode">
+  <ul>
+    <li ng-repeat="note in notes">{{note.title}}</li>
+  </ul>
+</div>
+<div ng-show="editMode" contenteditable="true" ng-bind="noteText"></div>
+
+<span> <a ng-click="openEditor()" ng-show="!editMode">Create a Note</span>
+<span> <a ng-click="saveNote()" ng-show="editMode">Back to Main</span>
