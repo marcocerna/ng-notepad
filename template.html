@@ -6,4 +6,5 @@
 <div id="editor" ng-show="editMode" contenteditable="true" ng-bind="noteText"></div>
 
 <span ng-show="!editMode"> <a ng-click="openEditor()">Create a Note</a></span>
-<span ng-show="editMode"> <a ng-click="saveNote()">Back</a></span>
+<span ng-show="editMode"> <a ng-click="saveNote()">Save Note</a></span>
+<span ng-show="editMode"> <a ng-click="deleteNote()">Delete Note</a></span>

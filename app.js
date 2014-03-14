@@ -34,6 +34,14 @@ angular.module('noteapp', [])
         scope.restore();
       };
 
+      scope.deleteNote = function() {
+        console.log("Index is: " + scope.index);
+        if (scope.index !== -1) {
+          scope.notes = notesFactory.delete(scope.index);
+        }
+        scope.restore();
+      };
+
       scope.restore();
       scope.notes = notesFactory.getAll();
 
@@ -60,6 +68,12 @@ angular.module('noteapp', [])
         notes.push(JSON.parse(note));
       };
       return notes;
+    },
+    delete: function(index) {
+      console.log(localStorage);
+      localStorage.removeItem('note' + index);
+      console.log(localStorage);
+      return this.getAll();
     }
   }
 })
