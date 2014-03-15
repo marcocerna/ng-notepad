@@ -63,16 +63,13 @@ angular.module('noteapp', [])
 
     getAll: function() {
       var notes = [];
-      for (var i = 0; i < localStorage.length; i++) {
-        var note = localStorage.getItem('note' + i);
-        notes.push(JSON.parse(note));
+      for (var key in localStorage) {
+        notes.push(JSON.parse(localStorage.getItem(key)));
       };
       return notes;
     },
     delete: function(index) {
-      console.log(localStorage);
       localStorage.removeItem('note' + index);
-      console.log(localStorage);
       return this.getAll();
     }
   }
